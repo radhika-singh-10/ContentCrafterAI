@@ -1,18 +1,18 @@
 # Directory Structure:
 
-# AgenticContentCreator/
-# ├── agents/
-# │   ├── content_generator.py
-# │   ├── feedback_manager.py
-# │   └── rag_retriever.py
-# ├── publisher/
-# │   └── publisher.py
-# ├── storage/
-# │   └── aws_s3_manager.py
-# ├── agentic_pipeline/
-# │   └── autogen_content_pipeline.py  
-# ├── main.py
-# ├── requirements.txt
+#### AgenticContentCreator/
+#### ├── agents/
+#### │   ├── content_generator.py
+#### │   ├── feedback_manager.py
+#### │   └── rag_retriever.py
+#### ├── publisher/
+#### │   └── publisher.py
+#### ├── storage/
+#### │   └── aws_s3_manager.py
+#### ├── agentic_pipeline/
+#### │   └── autogen_content_pipeline.py  
+#### ├── main.py
+#### ├── requirements.txt
 
 
 
