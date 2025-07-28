@@ -3,6 +3,7 @@ from langchain.chat_models import ChatOpenAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 import openai
+from publisher.publisher import publish_to_reddit
 
 # Ensure OpenAI API key is set
 openai.api_key = "YOUR_OPENAI_API_KEY"
@@ -26,6 +27,22 @@ content_agent = autogen.AssistantAgent(
 def handle_message_with_langchain(message, sender):
     topic = message["content"]
     post = langchain_content_generator(topic)
+    # Reddit configuration (replace with your credentials)
+    reddit_config = {
+        "client_id": "your_client_id",
+        "client_secret": "your_client_secret",
+        "user_agent": "agentic_ai_publisher_v1",
+        "username": "your_reddit_username",
+        "password": "your_reddit_password"
+    }
+
+    publish_to_reddit(
+        title=f"AI-Generated Content/Post: {topic}",
+        content=post,
+        subreddit_name="test",  # Change to your desired subreddit
+        reddit_config=reddit_config
+    )
+
     return post
 
 # --- Define Planner Agent ---
