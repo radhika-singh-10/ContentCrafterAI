@@ -102,6 +102,10 @@ pip freeze > requirements.txt
 
 
 # Set Environmental Variables
+```plaintext
+Stores the environmental variables in the .env file in the same format.  
+```
+
 
 ```bash
 export OPENAI_API_KEY="your-openai-api-key"
