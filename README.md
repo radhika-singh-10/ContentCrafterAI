@@ -92,11 +92,22 @@ deactivate
 pip freeze > requirements.txt
 ```
 
+# Set Reddit API ACCESS TOKEN
+
+- Go to https://www.reddit.com/settings/privacy, click on Third-party app authorizations under Advanced
+- Under apps, click on 'create another app'
+- Select script
+- Add the following information - Name: AgenticAI Publisher, Type: Script, Redirect URI: http://localhost:8080
+- Save Client ID and Secret
+
 
 # Set Environmental Variables
 
 ```bash
 export OPENAI_API_KEY="your-openai-api-key"
+```
+```bash
+export REDDIT_API_KEY = "your-reddit-api-key"
 ```
 
 ```bash
