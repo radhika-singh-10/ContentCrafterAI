@@ -19,32 +19,32 @@
 
 # Agentic AI Content Generator using free LLM and Stable Diffusion.
 
-In your project, I have built an Agentic AI-powered content creation ecosystem—essentially a self-improving system that automates generating, refining, and publishing social media content using multiple AI components. Here’s what’s happening step-by-step:
+In this project, I have built an Agentic AI-powered content creation ecosystem—essentially a self-improving system that automates generating, refining, and publishing social media content using multiple AI components. Here’s what’s happening step-by-step:
 
 # Content Generation:
 
-Microsoft Autogen + LangChain + LLMs + DALL·E:
+Microsoft Autogen + LangChain + LLMs + DALL·E + RAG:
 These tools generate rich content (text + images). Autogen and LangChain coordinate different models (like LLMs for text, DALL·E for images) to create end-to-end posts.
 
-Content Publishing:
+# Content Publishing:
 
 The system publishes this AI-generated content automatically across multiple social media platforms.
 
-Feedback Loop with MemGPT:
+# Feedback Loop with MemGPT:
 
 After publishing, MemGPT captures user interaction data (likes, comments, shares, engagement metrics).
 
 This data is used to refine the content generation pipeline, effectively making your AI learn what content performs better and adapt future outputs.
 
-RAG (Retrieval-Augmented Generation):
+# RAG (Retrieval-Augmented Generation):
 
 You enrich content by pulling relevant, real-time information from external databases or APIs before generation, ensuring content is more contextually relevant or timely.
 
-TensorFlow + GCP Deployment:
+TensorFlow + AWS Deployment:
 
 TensorFlow may be used for specific model serving or analytics tasks.
 
-Google Cloud Platform (GCP) handles deployment, scalability, and reliability, ensuring that your system can operate and scale in production environments.
+AWS handles deployment, scalability, and reliability, ensuring that your system can operate and scale in production environments.
 
 In short, you’re automating the full content pipeline: generate → publish → analyze → refine, using multiple modern AI tools working together in an "agentic" (goal-driven, self-directed) manner.
 
@@ -63,11 +63,12 @@ In short, you’re automating the full content pipeline: generate → publish �
 
 
 # Components:
-- Mistral 7B (Hugging Face)
-- Stable Diffusion v1.5
+- OpenAI
+- DALLE
+- AUTOGENA
 - LangChain
-- MemGPT (Optional)
-- GCP Storage (Optional)
+- MemGPT 
+- AWS 
 
 
 # Virtual Environment Creation
@@ -80,7 +81,7 @@ python -m venv .venv
 source .venv/bin/activate
 ```
 
-# To Deactivate the Virtual Envrionment 
+# To Deactivate the Virtual Environment 
 ```bash
 deactivate 
 ```
