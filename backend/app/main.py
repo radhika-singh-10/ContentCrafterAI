@@ -44,33 +44,33 @@ DRAFTS: Dict[str, Dict[str, Any]] = {}
 
 
 class GenerateReq(BaseModel):
-topic: str
-audience: str
+  topic: str
+  audience: str
 
 
 class PublishReq(BaseModel):
-draft_id: str
+  draft_id: str
 
 
 @app.post("/api/generate")
 def generate(req: GenerateReq):
-try:
-# Run writer + critic + designer only (no publish yet)
-draft = orch.writer_agent(req.topic, req.audience)
-orch.critic_agent({"text": draft["text"]})
-image_url = orch.designer_agent(draft.get("image_brief", ""))
-draft_id = str(uuid.uuid4())
-DRAFTS[draft_id] = {
-"topic": req.topic,
-"audience": req.audience,
-"draft": draft,
-"image_url": image_url,
-}
-return {"draft_id": draft_id, "draft": draft, "image_url": image_url}
-except Exception as e:
-raise HTTPException(status_code=500, detail=str(e))
+  try:
+  # Run writer + critic + designer only (no publish yet)
+    draft = orch.writer_agent(req.topic, req.audience)
+    orch.critic_agent({"text": draft["text"]})
+    image_url = orch.designer_agent(draft.get("image_brief", ""))
+    draft_id = str(uuid.uuid4())
+    DRAFTS[draft_id] = {
+    "topic": req.topic,
+    "audience": req.audience,
+    "draft": draft,
+    "image_url": image_url,
+    }
+    return {"draft_id": draft_id, "draft": draft, "image_url": image_url}
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/api/publish")
 def publish(req: PublishReq):
-return {"status": "ok"}
+  return {"status": "ok"}
