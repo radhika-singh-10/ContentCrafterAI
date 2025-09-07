@@ -73,4 +73,39 @@ def generate(req: GenerateReq):
 
 @app.post("/api/publish")
 def publish(req: PublishReq):
+  data = DRAFTS.get(req.draft_id)
+  if not data:
+    raise HTTPException(status_code=404, detail="draft_id not found")
+  draft = data["draft"]
+  try:
+    published = orch.publisher_agent(
+    draft["platform"], draft["text"], draft.get("hashtags", []), draft.get("cta", ""), data["image_url"]
+    )
+    # feedback → MemGPT
+    orch.memgpt.write_lesson(
+    topic=data["topic"],
+    audience=data["audience"],
+    features={
+    "platform": draft["platform"],
+    "hashtags": draft.get("hashtags", []),
+    "cta": draft.get("cta", ""),
+    },
+    engagement=published["metrics"],
+    )
+    data["published"] = published
+    return {"ok": True, "published": published}
+  except Exception as e:
+    raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/draft/{draft_id}")
+def get_draft(draft_id: str):
+  data = DRAFTS.get(draft_id)
+  if not data:
+    raise HTTPException(status_code=404, detail="draft_id not found")
+  return data
+
+
+@app.get("/api/health")
+def health():
   return {"status": "ok"}
