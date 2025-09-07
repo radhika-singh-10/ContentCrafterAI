@@ -63,9 +63,9 @@ In short, you’re automating the full content pipeline: generate → publish �
 
 
 # Components:
-- OpenAI
-- DALLE
-- AUTOGENA
+- OpenAI GPT 5 Text Generation API
+- DALLE 
+- AUTOGEN
 - LangChain
 - MemGPT 
 - AWS 
