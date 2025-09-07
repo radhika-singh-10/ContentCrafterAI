@@ -8,11 +8,11 @@ import os
 BACKEND = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 st.set_page_config(page_title="ContentCrafterAI", layout="wide")
-st.title("🧩 ContentCrafterAI – Agentic Campaign UI")
+st.title("ContentCrafterAI – Agentic Campaign UI")
 
 with st.sidebar:
     st.header("Campaign Inputs")
-    topic = st.text_input("Topic", value="NYRailSyncDB launch")
+    topic = st.text_input("Topic", value="ContentCrafterAI launch")
     audience = st.text_input("Audience", value="Infra engineers & data teams")
     if st.button("Generate Draft", use_container_width=True):
         with st.spinner("Generating draft (writer + designer)…"):
